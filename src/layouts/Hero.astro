@@ -1,0 +1,48 @@
+---
+import Carousel from "../components/Carousel.astro";
+---
+
+<div class="hero">
+  <div class="hero__title">
+    <h2>
+      Explore<br>the <span class="hero__title__accent">world</span>.
+    </h2>
+    <p>
+      <a href="/explore" class="btn">
+        Jetzt erkunden <i class="bi-arrow-right"/>
+      </a>
+    </p>
+  </div>
+  <Carousel className="hero__carousel"/>
+</div>
+
+<style lang="scss">
+.hero {
+  position: relative;
+  height: min(100vh, 80vw);
+  margin-bottom: 1rem;
+
+  &__title {
+    z-index: 2;
+    position: absolute;
+    inset: 50% 0 0 5vw;
+    transform: translateY(-50%);
+    
+    h2 {
+      font-weight: 600;
+      font-size: min(14vw, 15vh);
+      line-height: 0.9em;
+      margin-bottom: max(.5em, 2rem);
+    }
+
+    &__accent {
+      color: var(--accent);
+    }
+  }
+
+  &__carousel {
+    position: absolute;
+    inset: 0;
+  }
+}
+</style>

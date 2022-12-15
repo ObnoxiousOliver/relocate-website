@@ -1,0 +1,240 @@
+---
+import Logo from './Logo.astro'
+---
+
+<nav id="navbar" class="navbar">
+  <a class="navbar__logo" href="/">
+    <Logo/>
+  </a>
+  <ul class="navbar__links">
+    <li><a class="navbar__link" href="/">Start</a></li>
+    <li><a class="navbar__link" href="/about">Über uns</a></li>
+    <li><a class="navbar__link-btn" href="/explore">Explore the world <i class="bi-arrow-right"/></a></li>
+  </ul>
+  <div id="navbarMenuMask" class="navbar__menu-mask"></div>
+  <button id="navbarMenuBtn" class="navbar__menu-btn">
+    <i class="bi-filter-right"/>
+  </button>
+</nav>
+
+<script>
+  const btn = document.getElementById('navbarMenuBtn')
+  const mask = document.getElementById('navbarMenuMask')
+  const navbar = document.getElementById('navbar')
+
+  mask?.addEventListener('click', () => {
+    navbar?.classList.remove('menu-open')
+  })
+  btn?.addEventListener('click', () => {
+    navbar?.classList.toggle('menu-open')
+  })
+</script>
+
+<style lang="scss">
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 99;
+
+  display: flex;
+  height: 50px;
+  padding: 0 25px;
+
+  align-items: center;
+  justify-content: space-between;
+
+  background: #000a;
+
+  &::before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(50px);
+  }
+
+}
+
+.navbar__menu-mask {
+  z-index: -1;
+  position: fixed;
+  inset: 0;
+  background: #8882;
+  backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: .3s;
+
+  .menu-open & {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
+
+.navbar__logo {
+  display: grid;
+  height: 100%;
+  place-content: center;
+  z-index: -1;
+  flex-shrink: 0;
+  font-size: 1rem;
+  color: inherit;
+}
+
+.navbar__links {
+  z-index: 2;
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: 100%;
+  padding: 50px 0;
+  overflow: auto;
+  max-width: 250px;
+  list-style-type: none;
+  transform: translateX(100%);
+  transition: .5s cubic-bezier(0.19, 1, 0.22, 1);
+
+  background: black;
+
+  .menu-open & {
+    transform: translate(0);
+  }
+}
+
+.navbar__link {
+  display: block;
+  padding: 1rem 2rem;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar__link-btn {
+  display: block;
+  padding: 1rem 2rem;
+  color: var(--accent);
+  text-decoration: none;
+
+  i {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    z-index: 100;
+    display: flex;
+    height: 75px;
+    justify-content: space-between;
+  }
+
+  .navbar__links {
+    z-index: 0;
+    position: static;
+    inset: none;
+    width: auto;
+    padding: 0;
+    overflow: auto;
+    max-width: none;
+    display: flex;
+    flex: 0 0 auto;
+    transform: none;
+    overflow: visible;
+    transition: none;
+    background: none;
+  }
+
+  .navbar__menu-mask, .navbar__menu-btn {
+    display: none;
+  }
+
+  .navbar__links > li {
+    display: grid;
+    place-content: center;
+  }
+
+  .navbar__link {
+    position: relative;
+    height: 100%;
+    padding: 0 25px;
+    
+    line-height: 75px;
+    
+    transition: padding-bottom .5s cubic-bezier(0.19, 1, 0.22, 1);
+    
+    &::before {
+      content: '';
+      opacity: 0;
+      position: absolute;
+      inset: auto 50% calc(50% - .7rem) 50%;
+      height: 2px;
+      background: var(--accent);
+      transition: .5s cubic-bezier(0.19, 1, 0.22, 1), opacity .4s .1s;
+    }
+    
+    &:hover {
+      padding-bottom: 5px;
+      
+      &::before {
+        opacity: 1;
+        left: 25px;
+        right: 25px;
+        transition: .5s cubic-bezier(0.19, 1, 0.22, 1), opacity .1s;
+      }
+    }
+  }
+
+  .navbar__link-btn {
+    display: block;
+    padding: 0.5rem 1rem;
+    
+    margin-left: 25px;
+    
+    border-radius: 2rem;
+    
+    background: var(--accent);
+    color: black;
+    
+    font-weight: 500;
+    white-space: nowrap;
+    
+    box-shadow: var(--accent) 0 0 0 0;
+    transition: 
+      background .3s cubic-bezier(0.19, 1, 0.22, 1),
+      color .3s cubic-bezier(0.19, 1, 0.22, 1),
+      box-shadow 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+    i {
+      transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+      display: inline-block;
+    }
+
+    &:hover {
+      background: transparent;
+      color: var(--accent);
+      box-shadow: var(--accent) 0 0 0 2px;
+      
+      i {
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
+.navbar__menu-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+
+  height: 50px;
+  width: 50px;
+
+  font-size: 1.25rem;
+}
+</style>

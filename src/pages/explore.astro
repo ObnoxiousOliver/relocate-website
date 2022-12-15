@@ -1,0 +1,92 @@
+---
+import AttractionElement from "../components/AttractionElement.astro";
+import AttractionList from "../layouts/AttractionList.astro";
+import Layout from "../layouts/Layout.astro";
+import Wrapper from "../layouts/Wrapper.astro";
+---
+
+<Layout>
+  <Wrapper>
+    <h2 class="heading">Explore</h2>
+    <h3 class="subheading">Finde deine lieblings Reiseziele an einer Stelle!</h3>
+  
+    <AttractionList>
+      <AttractionElement
+        title="Gradina u srebreniku"
+        country="Bosnien"
+        href="/bosnia#gradina-u-srebreniku"
+        imgSrc="gradina-u-srebreniku.jpg"
+        span="true"
+      />
+      <AttractionElement
+        title="Bangkok"
+        country="Thailand"
+        href="/thailand#bangkok"
+        imgSrc="thailand-bangkok-stadt-nacht-0eb68346f1.jpg"
+      />
+      <AttractionElement
+        title="Tal der Könige"
+        country="Ägypten"
+        href="/egypt#valley-of-the-kings"
+        imgSrc="Valley of The Kings.png"
+      />
+      <AttractionElement
+        title="Taj Mmahal"
+        country="Indien"
+        href="/india#taj-mahal"
+        imgSrc="tajmahal.jpg"
+        span="true"
+      />
+      <AttractionElement
+        title="Sphinx"
+        country="Ägypten"
+        href="/egypt#sphinx"
+        imgSrc="grand-sphinx-egypte-vovik_mar-AdobeStock.webp"
+      />
+      <AttractionElement
+        title="Lotustempel"
+        country="Indien"
+        href="/egypt#lotus-temple"
+        imgSrc="photo-wallpaper-the-lotus-temple_big01.jpg"
+      />
+      <AttractionElement
+        title="Maya Bay"
+        country="Thailand"
+        href="/thailand#maya-bay"
+        imgSrc="How-to-get-to-Maya-Bay-Thailand.jpg"
+        span="true"
+      />
+      <AttractionElement
+        title="Stari Most"
+        country="Bosnien"
+        href="/bosnia#stari-most"
+        imgSrc="Stari most.jpeg"
+      />
+      <AttractionElement
+        title="Tempel von Abu Simbel"
+        country="Ägypten"
+        href="/egypt#abu-simbel"
+        imgSrc="abu-simbel.jpg"
+      />
+      <AttractionElement
+        title="Pyramiden von Gizeh"
+        country="Ägypten"
+        href="/egypt#pyramids"
+        imgSrc="pyramids-of-giza.jpg"
+        span="true"
+      />
+      <AttractionElement
+        title="Baščaršija"
+        country="Bosnien"
+        href="/bosnia#bascarsija"
+        imgSrc="Baščaršija.jpg"
+      />
+      <AttractionElement
+        title="Goldener Tempel"
+        country="Indien"
+        href="/india#golden-temple"
+        imgSrc="golden temple.jpg"
+      />
+    </AttractionList>
+  </Wrapper>
+</Layout>

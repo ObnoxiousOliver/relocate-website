@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <slot></slot>
+</div>
+
+<style lang="scss">
+.wrapper {
+  margin: 50px auto 100px;
+  max-width: 1000px;
+  width: 100vw;
+  padding: 0 1rem;
+
+  & > :global(img) {
+    width: 100%;
+  }
+}
+</style>
