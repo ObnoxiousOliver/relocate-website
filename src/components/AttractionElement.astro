@@ -2,7 +2,7 @@
 const {
   title,
   country,
-  imgSrc,
+  imgsrc,
   href,
   span
 } = Astro.props
@@ -11,7 +11,7 @@ const {
 <li style={span && `grid-column: span 2`} class={`attraction ${span  && 'span-2'}`}>
   <a href={href}>
     <div class="attraction__img">
-      <img src={imgSrc}>
+      <img src={imgsrc}>
     </div>
     <div class="attraction__content">
       <h3 class="attraction__title">{title}</h3>
@@ -32,10 +32,10 @@ const {
 
   a {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+    height: 100%;
     background: #0f0f0f;
     border: #222 solid 1px;
-    height: 150px;
     border-radius: 10px;
     overflow: hidden;
     color: inherit;
@@ -52,11 +52,6 @@ const {
       img {
         transform: scale(1.05);
       }
-    }
-    
-    @media screen and (min-width: 768px) {
-      flex-flow: column nowrap;
-      height: 100%;
     }
   }
 
